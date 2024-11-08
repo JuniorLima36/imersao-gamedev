@@ -1,5 +1,5 @@
-# 🎮 Imersão GameDev da Alura | As Aventuras de Hipsta
-Este é um jogo interativo criado com **p5.js**, que coloca os jogadores no mundo de aventuras de Hipsta! Desenvolvido para treinar e aprimorar habilidades em programação de jogos 2D, o projeto é modularizado para facilitar a expansão e a manutenção.
+# 🎮 Imersão Alura GameDev 
+As Aventuras de Hipsta este é um jogo interativo criado com **p5.js**, que coloca os jogadores no mundo de aventuras de Hipsta! Desenvolvido para treinar e aprimorar habilidades em programação de jogos 2D, o projeto é modularizado para facilitar a expansão e a manutenção.
 
 ## 📋 Sobre o Projeto
 "As Aventuras de Hipsta" é um jogo de plataforma desenvolvido com **p5.js**. O objetivo do projeto é oferecer uma experiência de jogo divertida e imersiva, com uma narrativa interativa e obstáculos desafiadores.
