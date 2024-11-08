@@ -5,14 +5,15 @@ class Game {
   }
 
   setup() {
+    this.layers = []
     for (let i = parallaxImages.length - 1; i >= 0; i--) {
-      layers[i] = new Scenario(parallaxImages[i], parallaxTimes[i])
+      this.layers[i] = new Scenario(parallaxImages[i], parallaxTimes[i])
     }
 
-    score = new Score()
-    life = new Life(tape.config.maximumLife, tape.config.initialLife)
+    this.score = new Score()
+    this.life = new Life(tape.config.maximumLife, tape.config.initialLife)
 
-    character = new Character({
+    this.character = new Character({
       image: characterImage,
       _width: 110,
       _height: 135,
@@ -46,55 +47,61 @@ class Game {
       numberFrames: 16
     }, 3 * width, 200, 10)
 
-    enemies.push(enemy, troll, flying)
+    this.enemies = [enemy, troll, flying]
   }
 
   keyPressed(key) {
-    if (key == 'ArrowUp' || key == ' ') {
-      character.jump()
+    if ((key === 'ArrowUp' || key === ' ') && this.life.lives > 0) {
+      this.character.jump()
+    } else if (this.life.lives <= 0 && key === 'Enter') {
+      this.restart()
     }
   }
 
   draw() {
-    for (let i = layers.length - 1; i >= 0; i--) {
-      layers[i].display()
-      layers[i].movement()
+    for (let i = this.layers.length - 1; i >= 0; i--) {
+      this.layers[i].display()
+      this.layers[i].movement()
     }
 
-    character.display()
-    character.applyGravity()
+    this.character.display()
+    this.character.applyGravity()
 
     const currentLine = this.maps[this.index]
-    const enemy = enemies[currentLine.enemy]
+    const enemy = this.enemies[currentLine.enemy]
 
     enemy.display()
     enemy.movement()
 
     if (enemy.alreadyPassed()) {
       this.index = ++this.index % this.maps.length
-
       enemy.speed = currentLine.speed
       enemy.toAppear()
     }
 
-    if (character.isColliding(enemy)) {
-      life.loseLife()
+    if (this.character.isColliding(enemy)) {
+      this.life.loseLife()
 
-      if (life.lives <= 0) {
+      if (this.life.lives <= 0) {
         this.gameOver()
       }
 
-      character.becomeInvincible()
+      this.character.becomeInvincible()
     }
 
-    life.display()
-    score.display()
-    score.addPoint()
+    this.life.display()
+    this.score.display()
+    this.score.addPoint()
   }
 
   gameOver() {
     image(gameOverImage, (width / 2) - (gameOverImage.width / 2), (height / 2) - (gameOverImage.height / 2))
-
     noLoop()
+  }
+
+  restart() {
+    this.index = 0
+    this.setup()
+    loop()
   }
 }

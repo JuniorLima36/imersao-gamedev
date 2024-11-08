@@ -1,17 +1,5 @@
 class Enemy extends Animation {
-  constructor(
-    {
-      image,
-      _width,
-      _height,
-      widthSprites,
-      heightSprites,
-      numberFrames
-    },
-    x,
-    deltaY,
-    speed
-  ) {
+  constructor({ image, _width, _height, widthSprites, heightSprites, numberFrames }, x, deltaY, speed ) {
     super({ image, _width, _height, widthSprites, heightSprites, numberFrames }, x, deltaY)
 
     this.speed = speed

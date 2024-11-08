@@ -1,6 +1,5 @@
 class Character extends Animation {
   constructor({ image, _width, _height, widthSprites, heightSprites, numberFrames }, x, deltaY, soundJump) {
-
     super({ image, _width, _height, widthSprites, heightSprites, numberFrames }, x, deltaY)
 
     this.yInitial = this.y

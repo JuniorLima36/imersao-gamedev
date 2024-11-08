@@ -1,16 +1,5 @@
 class Animation {
-  constructor(
-    {
-      image,
-      _width,
-      _height,
-      widthSprites,
-      heightSprites,
-      numberFrames
-    },
-    x,
-    deltaY
-  ) {
+  constructor({ image, _width, _height, widthSprites, heightSprites, numberFrames }, x, deltaY ) {
     this.image = image
 
     this._width = _width
